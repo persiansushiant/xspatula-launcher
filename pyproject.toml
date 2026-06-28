@@ -1,0 +1,12 @@
+[project]
+name = "xspatula-seed-database"
+version = "0.1.0"
+description = "Minimal Flask consumer for running Thomas' original Xspatula setup database files."
+requires-python = ">=3.10"
+dependencies = [
+  "flask>=3.0",
+  "xspatula",
+]
+
+[tool.setuptools]
+packages = ["app"]

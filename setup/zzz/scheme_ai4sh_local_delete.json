@@ -1,0 +1,18 @@
+{
+  "project_path": "./ai4sh",
+  "postgresdb": {
+    "host": "localhost",
+    "port": 5432,
+    "db": "ai4sh",
+    "user_name": "postgres",
+    "password": "!aA1!aA1"
+  },
+  "process": [
+    {
+      "execute": true,
+      "verbose": 1,
+      "overwrite": false,
+      "delete": true
+    }
+  ]
+}

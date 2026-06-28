@@ -1,0 +1,7 @@
+flask>=3.0
+python-dotenv>=1.0
+psycopg2-binary>=2.9
+ipykernel>=6.0
+jupyterlab>=4.0
+notebook>=7.0
+git+https://github.com/persiansushiant/xspatula.git

@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{{ title }}</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 960px; margin: 48px auto; line-height: 1.5; }
+    pre { background:#111; color:#eee; padding:20px; border-radius:14px; overflow:auto; white-space:pre-wrap; }
+    .ok { color: green; } .fail { color: crimson; }
+  </style>
+</head>
+<body>
+  <p><a href="/">← Back</a></p>
+  <h1>{{ title }}</h1>
+  {% if ok %}<h2 class="ok">Completed</h2>{% else %}<h2 class="fail">Failed</h2>{% endif %}
+  <pre>{{ output }}</pre>
+</body>
+</html>

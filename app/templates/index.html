@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="page-header">
+    <div>
+        <div class="eyebrow">Interactive setup runner</div>
+        <h1>Xspatula Launcher</h1>
+        <p>Run the original database workflow through a clean Flask interface.</p>
+    </div>
+
+    <button class="btn btn-dark game-button" onclick="openGame()">
+        <i class="bi bi-controller"></i>
+        Open Learning Game
+    </button>
+</div>
+
+<div class="workflow-grid">
+
+    <div class="task-card">
+        <div class="task-icon blue">
+            <i class="bi bi-database-add"></i>
+        </div>
+        <h3>Create Database</h3>
+        <p>Create PostgreSQL database, schemas, roles, tables and environment files.</p>
+
+        <span id="status-setup-db" class="badge-soft idle">Idle</span>
+
+        <button class="btn btn-primary w-100 mt-4 task-button"
+                onclick="confirmTask('setup-db')">
+            <i class="bi bi-play-fill"></i>
+            Create Database
+        </button>
+    </div>
+
+    <div class="task-card">
+        <div class="task-icon green">
+            <i class="bi bi-diagram-3"></i>
+        </div>
+        <h3>Setup Processes</h3>
+        <p>Register Xspatula process definitions, parameters and dependencies.</p>
+
+        <span id="status-setup-processes" class="badge-soft idle">Idle</span>
+
+        <button class="btn btn-success w-100 mt-4 task-button"
+                onclick="confirmTask('setup-processes')">
+            <i class="bi bi-play-fill"></i>
+            Setup Processes
+        </button>
+    </div>
+
+    <div class="task-card danger-card">
+        <div class="task-icon red">
+            <i class="bi bi-trash3"></i>
+        </div>
+        <h3>Delete Database</h3>
+        <p>Delete configured database content using the original delete workflow.</p>
+
+        <span id="status-delete-db" class="badge-soft idle">Idle</span>
+
+        <button class="btn btn-danger w-100 mt-4 task-button"
+                onclick="confirmTask('delete-db')">
+            <i class="bi bi-play-fill"></i>
+            Delete Database
+        </button>
+    </div>
+
+</div>
+
+<div class="progress-panel">
+    <div class="d-flex justify-content-between mb-2">
+        <strong>Execution Progress</strong>
+        <span id="progress-label">Waiting</span>
+    </div>
+
+    <div class="progress">
+        <div id="progress-bar"
+             class="progress-bar progress-bar-striped progress-bar-animated"
+             style="width: 0%">
+        </div>
+    </div>
+</div>
+
+<div class="console-panel">
+    <div class="console-header">
+        <div>
+            <i class="bi bi-terminal"></i>
+            Execution Console
+        </div>
+
+        <button class="btn btn-sm btn-outline-light" onclick="clearLog()">
+            Clear
+        </button>
+    </div>
+
+    <pre id="log-box" class="console-box">No task has run yet.</pre>
+</div>
+
+{% endblock %}
