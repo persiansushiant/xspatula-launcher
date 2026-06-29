@@ -1,0 +1,11 @@
+title: Xspatula Launcher
+description: A Flask-based graphical launcher for Xspatula projects.
+theme: minima
+
+markdown: kramdown
+
+nav_pages:
+  - quickstart.md
+  - architecture.md
+  - launcher-ui.md
+  - troubleshooting.md
