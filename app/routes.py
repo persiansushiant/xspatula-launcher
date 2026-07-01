@@ -8,6 +8,7 @@ from app.services.xspatula_runner import (
     run_setup_database,
     run_setup_processes,
     run_delete_database,
+    build_pipeline,
 )
 
 bp = Blueprint("main", __name__)
@@ -25,17 +26,43 @@ class Tee:
 
     def write(self, data):
         for stream in self.streams:
-            stream.write(data)
-            stream.flush()
+            try:
+                stream.write(data)
+                stream.flush()
+            except OSError:
+                pass
 
     def flush(self):
         for stream in self.streams:
-            stream.flush()
+            try:
+                stream.flush()
+            except OSError:
+                pass
 
 
 @bp.route("/")
 def index():
     return render_template("index.html")
+
+
+@bp.route("/api/pipeline/<task_name>", methods=["GET"])
+def pipeline_graph(task_name):
+    try:
+        graph = build_pipeline(task_name)
+
+        return jsonify({
+            "ok": True,
+            "graph": graph,
+        })
+
+    except Exception:
+        error_log = traceback.format_exc()
+        print(error_log, flush=True)
+
+        return jsonify({
+            "ok": False,
+            "error": error_log,
+        }), 500
 
 
 @bp.route("/api/run/<task_name>", methods=["POST"])
@@ -47,8 +74,8 @@ def run_task(task_name):
         }), 404
 
     buffer = io.StringIO()
-    tee_out = Tee(sys.__stdout__, buffer)
-    tee_err = Tee(sys.__stderr__, buffer)
+    tee_out = Tee(buffer)
+    tee_err = Tee(buffer)
 
     try:
         print(f"API received task: {task_name}", flush=True)

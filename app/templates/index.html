@@ -67,6 +67,36 @@
 
 </div>
 
+<section class="pipeline-panel">
+    <div class="pipeline-header">
+        <div>
+            <div class="eyebrow">Live execution graph</div>
+            <h2>Xspatula Pipeline</h2>
+            <p id="pipeline-subtitle">
+                Select a task to load the real graph from Xspatula.
+            </p>
+        </div>
+
+        <button class="btn btn-sm btn-light" onclick="playPipelineAnimation()">
+            <i class="bi bi-play-fill"></i>
+            Play Flow
+        </button>
+    </div>
+
+    <div class="pipeline-canvas-wrap">
+        <div id="pipeline-flow" class="pipeline-flow">
+            <div class="pipeline-empty">
+                <i class="bi bi-diagram-3"></i>
+                <span>No task selected yet.</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="pipeline-edge-info" class="pipeline-edge-info">
+        Waiting for graph...
+    </div>
+</section>
+
 <div class="progress-panel">
     <div class="d-flex justify-content-between mb-2">
         <strong>Execution Progress</strong>

@@ -1,12 +1,17 @@
 [project]
 name = "xspatula-seed-database"
-version = "0.1.0"
-description = "Minimal Flask consumer for running Thomas' original Xspatula setup database files."
-requires-python = ">=3.10"
-dependencies = [
-  "flask>=3.0",
-  "xspatula",
-]
+version = "1.4.0"
+description = "Launcher for Xspatula"
+requires-python = ">=3.12"
 
-[tool.setuptools]
-packages = ["app"]
+dependencies = [
+    "flask>=3.0",
+    "python-dotenv>=1.0",
+    "psycopg2-binary>=2.9",
+    "ipykernel>=6.0",
+    "jupyterlab>=4.0",
+    "pytest>=8.0",
+    "notebook>=7.0",
+
+    "xspatula @ git+https://github.com/persiansushiant/xspatula.git@v2.5.0",
+]
